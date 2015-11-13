@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumSystem.Models", "ForumSystem.Models\ForumSystem.Models.csproj", "{FFD7FAC1-5427-476E-8D37-D4BD22262CBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumSystem.Data", "ForumSystem.Data\ForumSystem.Data.csproj", "{A2679ED3-5CC6-4EF4-B099-8DD3393588AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumSystem.Api", "ForumSystem.Api\ForumSystem.Api.csproj", "{0E29AE4F-C436-4A4B-B8DA-8095C4CF275C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFD7FAC1-5427-476E-8D37-D4BD22262CBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFD7FAC1-5427-476E-8D37-D4BD22262CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFD7FAC1-5427-476E-8D37-D4BD22262CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFD7FAC1-5427-476E-8D37-D4BD22262CBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2679ED3-5CC6-4EF4-B099-8DD3393588AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2679ED3-5CC6-4EF4-B099-8DD3393588AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2679ED3-5CC6-4EF4-B099-8DD3393588AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2679ED3-5CC6-4EF4-B099-8DD3393588AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E29AE4F-C436-4A4B-B8DA-8095C4CF275C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E29AE4F-C436-4A4B-B8DA-8095C4CF275C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E29AE4F-C436-4A4B-B8DA-8095C4CF275C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E29AE4F-C436-4A4B-B8DA-8095C4CF275C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
