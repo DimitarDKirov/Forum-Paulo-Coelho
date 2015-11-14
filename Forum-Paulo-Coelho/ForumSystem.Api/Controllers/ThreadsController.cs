@@ -24,7 +24,20 @@
         {
             var threads = this.threads.All().ToList();
 
-            return Ok(threads);
+            return this.Ok(threads);
         }
+
+        [HttpGet]
+        public IHttpActionResult GetByCategory(int categoryId)
+        {
+            var threads = this.threads
+                .All()
+                .Where(t => t.Categories.Any(c=>c.Id==categoryId))
+                .ToList();
+
+            return this.Ok(threads);
+        }
+
+        //TODO update
     }
 }
