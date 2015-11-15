@@ -10,7 +10,7 @@
         private IRepository<Thread> threads;
 
         public ThreadsController()
-            :this(new EfGenericRepository<Thread>(new ForumDbContext()))
+            : this(new EfGenericRepository<Thread>(new ForumDbContext()))
         {
         }
 
@@ -32,7 +32,7 @@
         {
             var threads = this.threads
                 .All()
-                .Where(t => t.Categories.Any(c=>c.Id==categoryId))
+                .Where(t => t.Categories.Any(c => c.Id == categoryId))
                 .ToList();
 
             return this.Ok(threads);
