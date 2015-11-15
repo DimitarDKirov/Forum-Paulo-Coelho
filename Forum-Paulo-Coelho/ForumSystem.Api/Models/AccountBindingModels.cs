@@ -49,7 +49,9 @@ namespace ForumSystem.Api.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [MaxLength(25)]
+        [Required]
+        [MaxLength(25,ErrorMessage="{0} should be {1} characters long max")]
+        [Display(Name="NickName")]
         public string NickName { get; set; }
     }
 

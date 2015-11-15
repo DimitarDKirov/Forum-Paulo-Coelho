@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\ThreadsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -228,6 +229,10 @@
     <ProjectReference Include="..\ForumSystem.Models\ForumSystem.Models.csproj">
       <Project>{ffd7fac1-5427-476e-8d37-d4bd22262cba}</Project>
       <Name>ForumSystem.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForumSystem.Services\ForumSystem.Services.csproj">
+      <Project>{a5efc9a7-647f-4c0b-91c0-038c527753f5}</Project>
+      <Name>ForumSystem.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
