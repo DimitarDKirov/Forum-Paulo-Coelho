@@ -9,11 +9,6 @@
     {
         private IRepository<Thread> threads;
 
-        public ThreadsController()
-            : this(new EfGenericRepository<Thread>(new ForumDbContext()))
-        {
-        }
-
         public ThreadsController(IRepository<Thread> threads)
         {
             this.threads = threads;
