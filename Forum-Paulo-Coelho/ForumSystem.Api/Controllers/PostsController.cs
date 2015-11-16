@@ -5,40 +5,65 @@ using System.Web;
 using System.Web.Http;
 using ForumSystem.Data;
 using ForumSystem.Models;
+using ForumSystem.Services.Contracts;
 using ForumSystem.Api.Models.Posts;
-//using io.iron.ironmq;
-using IronMQ;
+using AutoMapper.QueryableExtensions;
 
 namespace ForumSystem.Api.Controllers
 {
-    public class PostsController:ApiController
+    [RoutePrefix("api/mitko")]
+    public class PostsController : ApiController
     {
-        private const string MessageQueueProjectId = "5649969d4aa03100090000b2";
-        private const string MessageQueueToken = "j46Yol8vc3puwszWc9O3";
-        private IRepository<Post> postsRepo;
-        private IRepository<Thread> threadsRepo;
-        private IRepository<User> usersRepo;
+        private IPostsService postsService;
 
-        public PostsController(IRepository<Post> posts, IRepository<Thread> thread, IRepository<User> users)
+        public PostsController(IPostsService service)
         {
-            this.postsRepo = posts;
-            this.threadsRepo = thread;
-            this.usersRepo = users;
+            this.postsService = service;
         }
 
-        public IHttpActionResult Get(int postId)
+        [HttpGet]
+        public IHttpActionResult Get(int id)
         {
-            var post = this.postsRepo
-                .GetById(postId);
+            var post = this.postsService
+                .GetById(id);
 
-            return this.Ok(post);
+            if (post == null)
+            {
+                return this.NotFound();
+            }
+
+            var responsePost = new PostsResponseModel
+            {
+                Id = post.Id,
+                PostDate = post.PostDate,
+                Content = post.Content,
+                NickName = post.User.Nickname,
+                ThreadTitle = post.Thread.Title
+            };
+
+            return this.Ok(responsePost);
         }
 
+        [HttpGet]
         public IHttpActionResult GetByThread(int threadId)
         {
-            var posts = this.postsRepo
-                .All()
-                .Where(p => p.ThreadId == threadId)
+            var posts = this.postsService
+                .GetByThread(threadId)
+                .ProjectTo<PostsResponseModel>()
+                .ToList();
+
+            return this.Ok(posts);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public IHttpActionResult GetByUser()
+        {
+            var user = this.User.Identity.Name;
+
+            var posts = this.postsService
+                .GetByUser(user)
+                .ProjectTo<PostsResponseModel>()
                 .ToList();
 
             return this.Ok(posts);
@@ -46,55 +71,47 @@ namespace ForumSystem.Api.Controllers
 
         [Authorize]
         [HttpPost]
-        public IHttpActionResult Create(int id, PostCreateRequestModel postModel)
+        public IHttpActionResult Add(int threadId, PostsRequestModel post)
         {
             if (!this.ModelState.IsValid)
             {
-                return BadRequest(this.ModelState);
+                return this.BadRequest("Incorrect post data");
             }
 
-            var dbThread = this.threadsRepo
-                .All()
-                .FirstOrDefault(t => t.Id == id);
-
-            if (dbThread == null)
+            string userName = this.User.Identity.Name;
+            int postId;
+            try
             {
-                return BadRequest("Thread with that id does not exist");
+                postId = this.postsService
+                     .Add(post.Content, threadId, userName);
+            }
+            catch (ArgumentException ae)
+            {
+                return this.BadRequest(ae.Message);
             }
 
-            var currentUser = this.usersRepo
-                .All()
-                .FirstOrDefault(u => u.UserName == this.User.Identity.Name);
+            return this.Ok("Post " + postId + " added");
+        }
 
-            var post = new Post
+        [Authorize]
+        [HttpPut]
+        public IHttpActionResult Update(int id, PostsRequestModel post)
+        {
+            if (!this.ModelState.IsValid)
             {
-                Content = postModel.Content,
-                PostDate = DateTime.Now
-            };
+                return this.BadRequest("Incorrect post data");
+            }
 
-            var otherUser = this.threadsRepo
-                .All()
-                .FirstOrDefault(t => t.Id == dbThread.Id)
-                .User;
-
-            otherUser.Notifications.Add(new Notification
+            try
             {
-                Message = this.User.Identity.Name + " add post on your thread.",
-                DateCreated = DateTime.Now
-            });
+                this.postsService.Update(id, post.Content);
+            }
+            catch (ArgumentException ae)
+            {
+                return this.BadRequest(ae.Message);
+            }
 
-            this.usersRepo.SaveChanges();
-
-			// Implement notifications functionality or message queues
-            Client client = new Client(MessageQueueProjectId, MessageQueueToken);
-            Queue queue = client.Queue(otherUser.Nickname);
-            queue.Push("[" + this.User.Identity.Name + "]" + " add post on your thread.");
-
-            currentUser.Posts.Add(post);
-            dbThread.Posts.Add(post);
-            threadsRepo.SaveChanges();
-
-            return Ok(postModel);
+            return this.Ok();
         }
     }
 }

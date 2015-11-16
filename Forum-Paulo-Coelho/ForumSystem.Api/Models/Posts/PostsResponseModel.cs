@@ -10,6 +10,7 @@ namespace ForumSystem.Api.Models.Posts
 {
     public class PostsResponseModel:IMapFrom<Post>,IHaveCustomMappings
     {
+        public int Id { get; set; }
         public DateTime PostDate { get; set; }
 
         public string Content { get; set; }

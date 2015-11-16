@@ -6,11 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ForumSystem.Data;
+using IronMQ;
 
 namespace ForumSystem.Services
 {
     public class PostsService : IPostsService
     {
+        private const string MessageQueueProjectId = "5649969d4aa03100090000b2";
+        private const string MessageQueueToken = "j46Yol8vc3puwszWc9O3";
         private readonly IRepository<Post> postsRepository;
         private readonly IRepository<User> usersRepository;
         private readonly IRepository<Thread> threadsRepository;
@@ -49,12 +52,13 @@ namespace ForumSystem.Services
 
         public int Add(string content, int threadId, string username)
         {
-            var user = this.FindUser(username);
-            if (this.threadsRepository.GetById(threadId) == null)
+            var thread = this.threadsRepository.GetById(threadId);
+            if (thread == null)
             {
-                throw new ArgumentException("Thred not found");
+                throw new ArgumentException("Thread not found");
             }
 
+            var user = this.FindUser(username);
             var newPost = new Post
             {
                 Content = content,
@@ -65,10 +69,29 @@ namespace ForumSystem.Services
 
             this.postsRepository.Add(newPost);
             this.postsRepository.SaveChanges();
+
+            var threadCreator = thread.User;
+            if (user.Id != threadCreator.Id)
+            {
+                var threadUserNotification = new Notification
+                {
+                    Message = user.Nickname + " added post on your thread.",
+                    DateCreated = newPost.PostDate
+                };
+
+                threadCreator.Notifications.Add(threadUserNotification);
+                this.usersRepository.SaveChanges();
+
+                // Implement notifications functionality or message queues
+                Client client = new Client(MessageQueueProjectId, MessageQueueToken);
+                Queue queue = client.Queue(threadCreator.Nickname);
+                queue.Push("[" + user.Nickname + "]" + " add post on your thread.");
+            }
+
             return newPost.Id;
         }
 
-        public void Update(int postId, string Content)
+        public void Update(int postId, string content)
         {
             var post = this.GetById(postId);
             if (post == null)
@@ -76,6 +99,7 @@ namespace ForumSystem.Services
                 throw new ArgumentException("Post not found");
             }
 
+            post.Content = content;
             this.postsRepository.Update(post);
             this.postsRepository.SaveChanges();
         }
