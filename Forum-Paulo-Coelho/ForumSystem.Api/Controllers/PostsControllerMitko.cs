@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Http;
-using ForumSystem.Data;
-using ForumSystem.Models;
-using ForumSystem.Services.Contracts;
-using ForumSystem.Api.Models.Posts;
-using AutoMapper.QueryableExtensions;
-
 namespace ForumSystem.Api.Controllers
 {
+    using System.Web.Http;
+    using ForumSystem.Data;
+    using ForumSystem.Models;
+    using ForumSystem.Services.Contracts;
+    using ForumSystem.Api.Models.Posts;
+    using AutoMapper.QueryableExtensions;
+
     public class PostsControllerMitko:ApiController
     {
         private IPostsService postsService;
