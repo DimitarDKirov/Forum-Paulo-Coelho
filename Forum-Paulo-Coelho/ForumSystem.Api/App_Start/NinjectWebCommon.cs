@@ -69,6 +69,7 @@ namespace ForumSystem.Api.App_Start
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
             kernel.Bind(typeof(ICategoriesService)).To(typeof(CategoriesService));
             kernel.Bind(typeof(IPostsService)).To(typeof(PostsService));
+            kernel.Bind(typeof(IThreadService)).To(typeof(ThreadService));
         }        
     }
 }

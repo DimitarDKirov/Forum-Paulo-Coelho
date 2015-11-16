@@ -8,16 +8,15 @@
     using ForumSystem.Data;
     using ForumSystem.Models;
     using Models.Threads;
+    using ForumSystem.Services.Contracts;
 
     public class ThreadsController : ApiController
     {
-        private IRepository<Thread> threads;
-        private IRepository<User> users;
+        private IThreadService threads;
 
-        public ThreadsController(IRepository<Thread> threads, IRepository<User> users)
+        public ThreadsController(IThreadService thredsService)
         {
-            this.threads = threads;
-            this.users = users;
+            this.threads = thredsService;
         }
 
         [HttpGet]
@@ -57,20 +56,10 @@
                 return BadRequest(this.ModelState);
             }
 
-            var currentUser = this.users
-                 .All()
-                 .FirstOrDefault(u => u.UserName == this.User.Identity.Name);
-
-            var dbThread = new Thread
-            {
-                Title = requestThread.Title,
-                Content = requestThread.Content,
-                UserId = currentUser.Id,
-                DateCreated = DateTime.Now
-            };
-
-            this.threads.Add(dbThread);
-            this.threads.SaveChanges();
+            this.threads.Add(
+                requestThread.Title,
+                requestThread.Content,
+                this.User.Identity.Name);
 
             return Ok(requestThread);
         }
@@ -85,7 +74,5 @@
 
             return this.Ok(threads);
         }
-
-        //TODO update
     }
 }
