@@ -12,6 +12,7 @@
      using IronMQ;
      using ForumSystem.Services.Contracts;
      using AutoMapper.QueryableExtensions;
+     using AutoMapper;
 
      public class PostsController : ApiController
      {
@@ -33,14 +34,7 @@
                  return this.NotFound();
              }
 
-             var responsePost = new PostsResponseModel
-             {
-                 Id = post.Id,
-                 PostDate = post.PostDate,
-                 Content = post.Content,
-                 NickName = post.User.Nickname,
-                 ThreadTitle = post.Thread.Title
-             };
+             var responsePost = Mapper.Map<PostsResponseModel>(post);
 
              return this.Ok(responsePost);
          }
