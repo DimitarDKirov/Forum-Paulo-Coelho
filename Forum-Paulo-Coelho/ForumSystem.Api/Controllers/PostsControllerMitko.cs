@@ -11,11 +11,11 @@ using AutoMapper.QueryableExtensions;
 
 namespace ForumSystem.Api.Controllers
 {
-    public class PostsController:ApiController
+    public class PostsControllerMitko:ApiController
     {
         private IPostsService postsService;
 
-        public PostsController(IPostsService service)
+        public PostsControllerMitko(IPostsService service)
         {
             this.postsService = service;
         }
