@@ -7,56 +7,86 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    internal class MemoryRepository<T> : IRepository<T> where T : class
+    public class MemoryRepository<T> : IRepository<T> where T : class
     {
+        private IList<T> data;
+       
+        public MemoryRepository()
+        {
+            this.data = new List<T>();
+            this.Attached = new List<T>();
+            this.Detached = new List<T>();
+            this.Updated = new List<T>();
+        }
+
+        public IList<T> Attached { get; set; }
+        public IList<T> Detached { get; set; }
+        public IList<T> Updated { get; set; }
+        public bool IsDisposed { get; private set; }
+        public int NumberOfSaves { get; private set; }
+
         public IQueryable<T> All()
         {
-            throw new NotImplementedException();
+            return this.data.AsQueryable<T>();
         }
 
         public T GetById(object id)
         {
-            throw new NotImplementedException();
+            int index = (int)id;
+            if(index>=this.data.Count)
+            {
+                throw new InvalidOperationException("There are less elements than required");
+            }
+
+            return this.data[index];
         }
 
         public void Add(T entity)
         {
-            throw new NotImplementedException();
+            this.data.Add(entity);
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            this.Updated.Add(entity);
         }
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            this.data.Remove(entity);
         }
 
         public void Delete(object id)
         {
-            throw new NotImplementedException();
+            int index = (int)id;
+            if (index >= this.data.Count)
+            {
+                throw new InvalidOperationException("There are less elements than required");
+            }
+
+            this.data.RemoveAt(index);
         }
 
         public T Attach(T entity)
         {
-            throw new NotImplementedException();
+            this.Attached.Add(entity);
+            return entity;
         }
 
         public void Detach(T entity)
         {
-            throw new NotImplementedException();
+            this.Detached.Add(entity);
         }
 
         public int SaveChanges()
         {
-            throw new NotImplementedException();
+            this.NumberOfSaves++;
+            return this.NumberOfSaves;
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            this.IsDisposed = true;
         }
     }
 }
