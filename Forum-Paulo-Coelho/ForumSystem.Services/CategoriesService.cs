@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ForumSystem.Services
 {
-    public class CategoriesService:ICategoriesService
+    public class CategoriesService : ICategoriesService
     {
         private readonly IRepository<Category> categoriesRepository;
 
@@ -25,9 +25,9 @@ namespace ForumSystem.Services
 
         public int Add(string name)
         {
-            var newCategory=new Category
+            var newCategory = new Category
             {
-                Name=name
+                Name = name
             };
 
             this.categoriesRepository.Add(newCategory);
@@ -38,7 +38,7 @@ namespace ForumSystem.Services
         public void Update(int categoryId, string name)
         {
             var category = this.categoriesRepository.GetById(categoryId);
-            if(category==null)
+            if (category == null)
             {
                 throw new ArgumentException("Category not found");
             }

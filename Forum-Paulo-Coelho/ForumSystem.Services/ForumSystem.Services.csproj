@@ -85,8 +85,10 @@
     <Compile Include="CategoriesService.cs" />
     <Compile Include="Contracts\ICategoriesService.cs" />
     <Compile Include="Contracts\IPostsService.cs" />
+    <Compile Include="Contracts\IThreadService.cs" />
     <Compile Include="PostsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThreadService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ForumSystem.Data\ForumSystem.Data.csproj">
@@ -101,7 +103,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="iron.json" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
