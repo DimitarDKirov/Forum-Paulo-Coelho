@@ -212,6 +212,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Contracts\IHaveCustomMappings.cs" />
     <Compile Include="Models\Contracts\IMapFrom.cs" />
+    <Compile Include="Models\Posts\PostsRequestModel.cs" />
+    <Compile Include="Models\Posts\PostsResponseModel.cs" />
     <Compile Include="Models\Threads\ThreadRequestModel.cs" />
     <Compile Include="Models\Threads\ThreadResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

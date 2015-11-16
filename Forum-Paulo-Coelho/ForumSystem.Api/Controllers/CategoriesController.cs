@@ -23,14 +23,16 @@ namespace ForumSystem.Api.Controllers
         }
 
         [Authorize]
-        public IHttpActionResult Post(string name)
+        [HttpPost]
+        public IHttpActionResult Add(string name)
         {
             this.categoriesService.Add(name);
             return this.Ok();
         }
 
         [Authorize]
-        public IHttpActionResult Put(int id, string name)
+        [HttpPut]
+        public IHttpActionResult Update(int id, string name)
         {
             try
             {

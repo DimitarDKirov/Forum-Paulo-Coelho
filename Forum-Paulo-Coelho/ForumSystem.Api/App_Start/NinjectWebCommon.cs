@@ -11,6 +11,8 @@ namespace ForumSystem.Api.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Data;
+    using ForumSystem.Services;
+    using ForumSystem.Services.Contracts;
 
     public static class NinjectWebCommon 
     {
@@ -65,6 +67,8 @@ namespace ForumSystem.Api.App_Start
             kernel.Bind<IForumDbContext>().To<ForumDbContext>().InRequestScope();
 
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
+            kernel.Bind(typeof(ICategoriesService)).To(typeof(CategoriesService));
+            kernel.Bind(typeof(IPostsService)).To(typeof(PostsService));
         }        
     }
 }
