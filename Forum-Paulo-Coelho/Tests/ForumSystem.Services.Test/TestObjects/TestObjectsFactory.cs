@@ -36,7 +36,7 @@ namespace ForumSystem.Services.Test.TestObjects
                 {
                     Content = "content" + i,
                     Id = i,
-                    PostDate = new DateTime(2015, 11, i),
+                    PostDate = new DateTime(2015, 11, i + 1),
                     ThreadId = i % 5,
                     UserId = "id" + i % 10
                 };
@@ -56,7 +56,7 @@ namespace ForumSystem.Services.Test.TestObjects
                 {
                     Id = i,
                     Content = "content" + i,
-                    DateCreated = new DateTime(2015, 11, i),
+                    DateCreated = new DateTime(2015, 11, i + 1),
                     Title = "title" + i,
                     UserId = "id" + i % 10,
                 };
@@ -75,7 +75,7 @@ namespace ForumSystem.Services.Test.TestObjects
                 var comment = new Comment
                 {
                     Id = i,
-                    CommentDate = new DateTime(2015, 11, i),
+                    CommentDate = new DateTime(2015, 11, i + 1),
                     Content = "content" + i,
                     PostId = i,
                     UserId = "id" + i % 10,
