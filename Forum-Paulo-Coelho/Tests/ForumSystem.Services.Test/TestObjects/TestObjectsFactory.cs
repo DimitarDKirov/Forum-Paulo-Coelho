@@ -31,9 +31,9 @@ namespace ForumSystem.Services.Test.TestObjects
 
         public static IThreadService GetThreadService()
         {
-            var threadssService = new Mock<IThreadService>();
+            var threadsService = new Mock<IThreadService>();
 
-            threadssService.Setup(s => s.All()).Returns(new List<Thread>
+            threadsService.Setup(s => s.All()).Returns(new List<Thread>
             {
                 new Thread(){
                     DateCreated = DateTime.Now.AddDays(2), Id = 1, Title = "Test Title 1", Content = "Test Content 1",
@@ -74,7 +74,7 @@ namespace ForumSystem.Services.Test.TestObjects
                         }}
             }.AsQueryable());
 
-            threadssService.Setup(s => s.Add(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+            threadsService.Setup(s => s.Add(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(new Thread
                 {
                     Id = 1,
@@ -90,7 +90,7 @@ namespace ForumSystem.Services.Test.TestObjects
                     }
                 });
 
-            return threadssService.Object;
+            return threadsService.Object;
         }
     }
 }
