@@ -25,7 +25,7 @@
             return threads;
         }
 
-        public void Add(string title, string content, string creator)
+        public Thread Add(string title, string content, string creator)
         {
             var currentUser = this.users
                  .All()
@@ -41,6 +41,8 @@
 
             this.threads.Add(dbThread);
             this.threads.SaveChanges();
+
+            return dbThread;
         }
     }
 }

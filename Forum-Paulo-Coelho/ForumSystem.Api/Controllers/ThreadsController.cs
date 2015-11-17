@@ -56,12 +56,21 @@
                 return BadRequest(this.ModelState);
             }
 
-            this.threads.Add(
+            var dbThread = this.threads.Add(
                 requestThread.Title,
                 requestThread.Content,
                 this.User.Identity.Name);
 
-            return Ok(requestThread);
+            var response = new ThreadResponseModel
+            {
+                Id = dbThread.Id,
+                Title = dbThread.Title,
+                Content = dbThread.Content,
+                DateCreated = dbThread.DateCreated,
+                Creator = this.User.Identity.Name
+            };
+
+            return Ok(response);
         }
 
         [HttpGet]
@@ -70,6 +79,7 @@
             var threads = this.threads
                 .All()
                 .Where(t => t.Categories.Any(c => c.Id == categoryId))
+                .ProjectTo<ThreadResponseModel>()
                 .ToList();
 
             return this.Ok(threads);

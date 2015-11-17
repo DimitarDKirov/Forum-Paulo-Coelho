@@ -7,6 +7,8 @@
 
     public class ThreadResponseModel : IMapFrom<Thread>, IHaveCustomMappings
     {
+        public int Id { get; set; }
+
         public string Title { get; set; }
 
         public string Content { get; set; }
