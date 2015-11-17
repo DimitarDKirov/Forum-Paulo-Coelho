@@ -7,6 +7,6 @@
     {
         IQueryable<Thread> All();
 
-        void Add(string title, string content, string creator);
+        Thread Add(string title, string content, string creator);
     }
 }
