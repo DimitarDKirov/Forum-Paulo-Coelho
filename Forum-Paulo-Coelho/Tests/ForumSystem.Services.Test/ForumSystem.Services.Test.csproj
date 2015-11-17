@@ -90,6 +90,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestObjects\MemoryRepository.cs" />
     <Compile Include="TestObjects\TestObjectsFactory.cs" />
+    <Compile Include="ThreadsServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
