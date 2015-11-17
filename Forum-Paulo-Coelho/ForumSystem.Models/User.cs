@@ -25,15 +25,8 @@
         }
 
         [Required]
-        public string Username { get; set; }
-
-        [Required]
         public string Nickname { get; set; }
 
-        [Required]
-        public string AuthCode { get; set; }
-
-        public string SessionKey { get; set; }
 
         public virtual ICollection<Thread> Threads
         {
