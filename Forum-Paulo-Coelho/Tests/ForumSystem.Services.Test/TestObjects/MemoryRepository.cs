@@ -32,10 +32,20 @@
 
         public T GetById(object id)
         {
-            int index = (int)id;
+            int index;
+            if (id is int)
+            {
+                index = (int)id;
+            }
+            else
+            {
+                var random=new Random();
+                index = random.Next(this.data.Count);
+            }
+
             if(index>=this.data.Count)
             {
-                throw new InvalidOperationException("There are less elements than required");
+               return null;
             }
 
             return this.data[index];

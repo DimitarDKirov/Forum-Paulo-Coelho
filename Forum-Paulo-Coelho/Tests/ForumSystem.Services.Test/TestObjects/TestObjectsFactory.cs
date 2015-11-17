@@ -32,15 +32,22 @@ namespace ForumSystem.Services.Test.TestObjects
         public static MemoryRepository<Post> GetPostsRepository()
         {
             var postsRepository = new MemoryRepository<Post>();
+            var users = GetUsersRepository();
+            var threads = GetThreadsRepository();
+
             for (int i = 0; i < 20; i++)
             {
+                var thread = threads.GetById(i % 5);
+                var user = users.GetById("id" + i % 10);
                 var post = new Post
                 {
                     Content = "content" + i,
                     Id = i,
                     PostDate = new DateTime(2015, 11, i + 1),
-                    ThreadId = i % 5,
-                    UserId = "id" + i % 10
+                    ThreadId = thread.Id,
+                    Thread=thread,
+                    UserId = user.Id,
+                    User=user
                 };
 
                 postsRepository.Add(post);
@@ -52,15 +59,19 @@ namespace ForumSystem.Services.Test.TestObjects
         public static MemoryRepository<Thread> GetThreadsRepository()
         {
             var threadsRepository = new MemoryRepository<Thread>();
+            var users = GetUsersRepository();
+
             for (int i = 0; i < 5; i++)
             {
+                var user = users.GetById("id" + i % 10);
                 var thread = new Thread
                 {
                     Id = i,
                     Content = "content" + i,
                     DateCreated = new DateTime(2015, 11, i + 1),
                     Title = "title" + i,
-                    UserId = "id" + i % 10,
+                    UserId = user.Id,
+                    User=user
                 };
 
                 threadsRepository.Add(thread);
@@ -72,15 +83,22 @@ namespace ForumSystem.Services.Test.TestObjects
         public static MemoryRepository<Comment> GetCommentsRepository()
         {
             var commentsRepository = new MemoryRepository<Comment>();
+            var users = GetUsersRepository();
+            var posts = GetPostsRepository();
+
             for (int i = 0; i < 20; i++)
             {
+                var user = users.GetById("id" + i % 10);
+                var post = posts.GetById(i);
                 var comment = new Comment
                 {
                     Id = i,
                     CommentDate = new DateTime(2015, 11, i + 1),
                     Content = "content" + i,
-                    PostId = i,
-                    UserId = "id" + i % 10,
+                    PostId = post.Id,
+                    Post=post,
+                    UserId = user.Id,
+                    User=user,
                 };
 
                 commentsRepository.Add(comment);
