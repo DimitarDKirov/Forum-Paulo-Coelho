@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumSystem.Models", "ForumSystem.Models\ForumSystem.Models.csproj", "{FFD7FAC1-5427-476E-8D37-D4BD22262CBA}"
 EndProject
@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumSystem.Services", "For
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumSystem.Services.Test", "Tests\ForumSystem.Services.Test\ForumSystem.Services.Test.csproj", "{E4CCC055-AF43-418C-AE52-0CEB396154EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{89D8707E-BFE3-412B-9780-FE30B112A10F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1FB98D18-B054-43D1-9E4A-13B898E82069}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForumSystem.Api.Tests", "Tests\ForumSystem.Api.Tests\ForumSystem.Api.Tests.csproj", "{2493E004-9922-4CC3-BAEB-2BDBEB4C3B3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,12 +43,16 @@ Global
 		{E4CCC055-AF43-418C-AE52-0CEB396154EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4CCC055-AF43-418C-AE52-0CEB396154EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4CCC055-AF43-418C-AE52-0CEB396154EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{89D8707E-BFE3-412B-9780-FE30B112A10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89D8707E-BFE3-412B-9780-FE30B112A10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89D8707E-BFE3-412B-9780-FE30B112A10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89D8707E-BFE3-412B-9780-FE30B112A10F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2493E004-9922-4CC3-BAEB-2BDBEB4C3B3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2493E004-9922-4CC3-BAEB-2BDBEB4C3B3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2493E004-9922-4CC3-BAEB-2BDBEB4C3B3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2493E004-9922-4CC3-BAEB-2BDBEB4C3B3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E4CCC055-AF43-418C-AE52-0CEB396154EA} = {1FB98D18-B054-43D1-9E4A-13B898E82069}
+		{2493E004-9922-4CC3-BAEB-2BDBEB4C3B3B} = {1FB98D18-B054-43D1-9E4A-13B898E82069}
 	EndGlobalSection
 EndGlobal

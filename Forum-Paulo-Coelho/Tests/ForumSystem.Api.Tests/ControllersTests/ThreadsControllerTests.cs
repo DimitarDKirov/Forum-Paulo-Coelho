@@ -1,4 +1,4 @@
-﻿namespace ForumSystem.Services.Test.ControllersTests
+﻿namespace ForumSystem.Api.Tests.ControllersTests
 {
     using System.Collections.Generic;
     using System.Reflection;
@@ -9,7 +9,7 @@
     using ForumSystem.Api.Controllers;
     using ForumSystem.Api.Models.Threads;
     using ForumSystem.Services.Contracts;
-    using ForumSystem.Services.Test.TestObjects;
+    using ForumSystem.Api.Tests.TestObjects;
 
     [TestClass]
     public class ThreadsControllerTests
