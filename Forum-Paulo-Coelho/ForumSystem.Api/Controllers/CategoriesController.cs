@@ -24,8 +24,8 @@
         [HttpPost]
         public IHttpActionResult Add(string name)
         {
-            this.categoriesService.Add(name);
-            return this.Ok();
+            var id = this.categoriesService.Add(name);
+            return this.Ok(id);
         }
 
         [Authorize]

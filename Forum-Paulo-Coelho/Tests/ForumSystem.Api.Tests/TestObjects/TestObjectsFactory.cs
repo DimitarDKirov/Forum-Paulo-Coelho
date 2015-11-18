@@ -103,5 +103,30 @@
 
             return postsService.Object;
         }
+
+        public static ICategoriesService GetCategoriesService()
+        {
+            var categories=new List<Category>
+            {
+                new Category
+                {
+                    Id=1,
+                    Name="test",
+                    Threads=new List<Thread>()
+                }
+            };
+
+            var categoriesService=new Mock<ICategoriesService>();
+            categoriesService.Setup(c=>c.GetAll()).Returns(categories.AsQueryable());
+            categoriesService.Setup(c=>c.Add(It.IsAny<string>())).Returns(2);
+            categoriesService
+                .Setup(c=>c.Update(It.Is<int>(i=>i>100), It.IsAny<string>()))
+                .Throws<ArgumentException>();
+            categoriesService
+                .Setup(c=>c.Update(It.Is<int>(i=>i<100), It.IsAny<string>()))
+                .Verifiable();
+
+            return categoriesService.Object;
+        }
     }
 }
