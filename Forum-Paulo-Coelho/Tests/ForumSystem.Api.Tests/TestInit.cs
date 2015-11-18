@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Web.Http;
 using System.Reflection;
+using MyTested.WebApi;
 
 namespace ForumSystem.Api.Tests
 {
@@ -15,6 +16,7 @@ namespace ForumSystem.Api.Tests
 
             var config = new HttpConfiguration();
             WebApiConfig.Register(config);
+            MyWebApi.IsUsing(WebApiConfig.Config);
         }
     }
 }

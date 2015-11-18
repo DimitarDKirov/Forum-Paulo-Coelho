@@ -23,6 +23,7 @@
              this.postsService = service;
          }
 
+         //api/posts/1
          [HttpGet]
          public IHttpActionResult Get(int id)
          {
@@ -39,6 +40,7 @@
              return this.Ok(responsePost);
          }
 
+         //api/posts?threadId=1
          [HttpGet]
          public IHttpActionResult GetByThread(int threadId)
          {
@@ -50,6 +52,7 @@
              return this.Ok(posts);
          }
 
+         //api/posts
          [Authorize]
          [HttpGet]
          public IHttpActionResult GetByUser()
@@ -64,6 +67,7 @@
              return this.Ok(posts);
          }
 
+         //api/posts?threadId=1
          [Authorize]
          [HttpPost]
          public IHttpActionResult Add(int threadId, PostsRequestModel post)
@@ -88,6 +92,7 @@
              return this.Ok("Post " + postId + " added");
          }
 
+         //api/posts/1
          [Authorize]
          [HttpPut]
          public IHttpActionResult Update(int id, PostsRequestModel post)

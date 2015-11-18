@@ -10,6 +10,8 @@ namespace ForumSystem.Api
 {
     public static class WebApiConfig
     {
+        public static HttpConfiguration Config { get; private set; }
+
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
@@ -25,6 +27,8 @@ namespace ForumSystem.Api
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            Config = config;
         }
     }
 }
