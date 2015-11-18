@@ -15,7 +15,7 @@
 
 ### Project purpose:
 
-Internet forum Web Api, where people can where people can open new topic.Each topic , users can make posts. Also, depending on the access level of the user it has a different level of access.Only authorized users can add new topics , posts or comments to them.
+Internet forum Web Api, where people can open new topic.Each topic , users can make posts. Also, depending on the access level of the user it has a different level of access.Only authorized users can add new topics , posts or comments to them.
 All users can see the entire contents of the forum.
 Service support all restful operation like **PUT**, **GET**, **POST** and **DELETE**.
 
