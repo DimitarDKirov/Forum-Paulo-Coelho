@@ -31,6 +31,11 @@
                  .All()
                  .FirstOrDefault(u => u.UserName == creator);
 
+            if(currentUser == null)
+            {
+                throw new ArgumentNullException("No current login user");
+            }
+
             var dbThread = new Thread
             {
                 Title = title,
