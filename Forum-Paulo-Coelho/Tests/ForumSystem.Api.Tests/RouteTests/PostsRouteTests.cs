@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Web.Http;
-using MyTested.WebApi;
-using ForumSystem.Api.Controllers;
-using System.Net.Http;
-using ForumSystem.Api.Models.Posts;
-
-namespace ForumSystem.Api.Tests.RouteTests
+﻿namespace ForumSystem.Api.Tests.RouteTests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using MyTested.WebApi;
+    using ForumSystem.Api.Controllers;
+    using System.Net.Http;
+    using ForumSystem.Api.Models.Posts;
+
     [TestClass]
     public class PostsRouteTests
     {

@@ -108,6 +108,7 @@
   <ItemGroup>
     <Compile Include="ControllersTests\PostsControllerTest.cs" />
     <Compile Include="ControllersTests\ThreadsControllerTests.cs" />
+    <Compile Include="RouteTests\CategoriesRouteTests.cs" />
     <Compile Include="RouteTests\PostsRouteTests.cs" />
     <Compile Include="RouteTests\ThreadsRouteTests.cs" />
     <Compile Include="TestObjects\TestObjectsFactory.cs" />

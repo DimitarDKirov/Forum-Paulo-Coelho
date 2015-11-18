@@ -1,16 +1,11 @@
-﻿using MyTested.WebApi;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ForumSystem.Api.Controllers;
-using System.Net.Http;
-using ForumSystem.Api.Models.Threads;
-
-namespace ForumSystem.Api.Tests.RouteTests
+﻿namespace ForumSystem.Api.Tests.RouteTests
 {
+    using MyTested.WebApi;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using ForumSystem.Api.Controllers;
+    using System.Net.Http;
+    using ForumSystem.Api.Models.Threads;
+
     [TestClass]
     public class ThreadsRouteTests
     {
@@ -29,16 +24,16 @@ namespace ForumSystem.Api.Tests.RouteTests
             MyWebApi
                 .Routes()
                 .ShouldMap("api/threads/1")
-                .To<ThreadsController>(t => t.GetById(1));            
+                .To<ThreadsController>(t => t.GetById(1));
         }
 
         [TestMethod]
         public void PostShouldMapCorrectly()
         {
-            var request=new ThreadRequestModel
+            var request = new ThreadRequestModel
             {
-                Content="test content",
-                Title="test title"
+                Content = "test content",
+                Title = "test title"
             };
 
             MyWebApi

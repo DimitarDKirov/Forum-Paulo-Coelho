@@ -1,14 +1,8 @@
-﻿using ForumSystem.Models;
-using ForumSystem.Services.Contracts;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ForumSystem.Services.Test.TestObjects
+﻿namespace ForumSystem.Services.Test.TestObjects
 {
+    using ForumSystem.Models;
+    using System;
+
     public static class TestObjectsFactory
     {
         public static MemoryRepository<User> GetUsersRepository()
@@ -45,9 +39,9 @@ namespace ForumSystem.Services.Test.TestObjects
                     Id = i,
                     PostDate = new DateTime(2015, 11, i + 1),
                     ThreadId = thread.Id,
-                    Thread=thread,
+                    Thread = thread,
                     UserId = user.Id,
-                    User=user
+                    User = user
                 };
 
                 postsRepository.Add(post);
@@ -71,7 +65,7 @@ namespace ForumSystem.Services.Test.TestObjects
                     DateCreated = new DateTime(2015, 11, i + 1),
                     Title = "title" + i,
                     UserId = user.Id,
-                    User=user
+                    User = user
                 };
 
                 threadsRepository.Add(thread);
@@ -96,9 +90,9 @@ namespace ForumSystem.Services.Test.TestObjects
                     CommentDate = new DateTime(2015, 11, i + 1),
                     Content = "content" + i,
                     PostId = post.Id,
-                    Post=post,
+                    Post = post,
                     UserId = user.Id,
-                    User=user,
+                    User = user,
                 };
 
                 commentsRepository.Add(comment);

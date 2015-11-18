@@ -1,15 +1,10 @@
 ﻿namespace ForumSystem.Api.Controllers
  {
      using System;
-     using System.Collections.Generic;
      using System.Linq;
-     using System.Web;
      using System.Web.Http;
-     using ForumSystem.Data;
-     using ForumSystem.Models;
      using ForumSystem.Api.Models.Posts;
      //using io.iron.ironmq;
-     using IronMQ;
      using ForumSystem.Services.Contracts;
      using AutoMapper.QueryableExtensions;
      using AutoMapper;

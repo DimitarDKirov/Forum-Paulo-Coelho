@@ -1,15 +1,12 @@
-﻿using ForumSystem.Services.Contracts;
-using ForumSystem.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ForumSystem.Data;
-using IronMQ;
-
-namespace ForumSystem.Services
+﻿namespace ForumSystem.Services
 {
+    using ForumSystem.Services.Contracts;
+    using ForumSystem.Models;
+    using System;
+    using System.Linq;
+    using ForumSystem.Data;
+    using IronMQ;
+
     public class PostsService : IPostsService
     {
         private const string MessageQueueProjectId = "5649969d4aa03100090000b2";

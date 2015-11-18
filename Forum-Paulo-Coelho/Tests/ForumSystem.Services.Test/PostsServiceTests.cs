@@ -1,11 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ForumSystem.Models;
-using ForumSystem.Services.Test.TestObjects;
-using System.Linq;
-
-namespace ForumSystem.Services.Test
+﻿namespace ForumSystem.Services.Test
 {
+    using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using ForumSystem.Models;
+    using ForumSystem.Services.Test.TestObjects;
+    using System.Linq;
+
     [TestClass]
     public class PostsServiceTests
     {
@@ -42,7 +42,7 @@ namespace ForumSystem.Services.Test
         [ExpectedException(typeof(ArgumentException), "Expected Argument Exception if user does not exist")]
         public void AddWithNotExistingUserShouldThrow()
         {
-            int savesBefore=this.postsRepository.NumberOfSaves;
+            int savesBefore = this.postsRepository.NumberOfSaves;
             this.service.Add("some content", 1, "");
             Assert.AreEqual(0, this.postsRepository.NumberOfSaves - savesBefore, "Wrong data should not invoke SaveChanges");
         }
@@ -63,11 +63,11 @@ namespace ForumSystem.Services.Test
             int savesBefore = this.postsRepository.NumberOfSaves;
             var postToAdd = this.postsRepository.All().FirstOrDefault();
             var postUser = this.usersRepository.All().LastOrDefault();
-            int addedPostId= this.service.Add(postToAdd.Content, postToAdd.ThreadId, postUser.UserName);
-            Assert.AreEqual(1, this.postsRepository.NumberOfSaves-savesBefore, "Data should invoke Save Changes");
-           var addedPost=this.postsRepository.GetById(addedPostId);
+            int addedPostId = this.service.Add(postToAdd.Content, postToAdd.ThreadId, postUser.UserName);
+            Assert.AreEqual(1, this.postsRepository.NumberOfSaves - savesBefore, "Data should invoke Save Changes");
+            var addedPost = this.postsRepository.GetById(addedPostId);
             Assert.IsNotNull(addedPost, "Post should be added");
-            Assert.AreEqual(postToAdd.Content, addedPost.Content,"Added post should contain correct content");     
+            Assert.AreEqual(postToAdd.Content, addedPost.Content, "Added post should contain correct content");
         }
 
         [TestMethod]
@@ -84,7 +84,7 @@ namespace ForumSystem.Services.Test
             var postToUpdate = this.postsRepository
                 .All()
                 .FirstOrDefault();
-            string newContent="Updated content";
+            string newContent = "Updated content";
             this.service.Update(postToUpdate.Id, "Updated content");
             Assert.AreEqual(1, this.postsRepository.NumberOfSaves - savesBefore, "Update should invoke save changes");
             Assert.AreEqual(newContent, this.postsRepository.GetById(postToUpdate.Id).Content, "Update should save new content");

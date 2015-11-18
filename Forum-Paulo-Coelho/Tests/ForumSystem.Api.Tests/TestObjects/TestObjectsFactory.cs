@@ -1,14 +1,11 @@
 ﻿namespace ForumSystem.Api.Tests.TestObjects
 {
     using ForumSystem.Models;
-    using ForumSystem.Services;
     using ForumSystem.Services.Contracts;
     using Moq;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     class TestObjectsFactory
     {

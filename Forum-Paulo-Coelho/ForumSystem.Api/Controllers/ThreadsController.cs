@@ -1,12 +1,8 @@
 ﻿namespace ForumSystem.Api.Controllers
 {
-    using System;
     using System.Linq;
     using System.Web.Http;
-    using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using ForumSystem.Data;
-    using ForumSystem.Models;
     using Models.Threads;
     using ForumSystem.Services.Contracts;
 
