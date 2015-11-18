@@ -22,7 +22,7 @@ Service support all restful operation like **PUT**, **GET**, **POST** and **DELE
 ### Models Class Diagram
 
 
-![]("ForumSystemClassDiagram.png")
+![]("./ForumSystemClassDiagram.png")
 
 
 ### API Controllers:
