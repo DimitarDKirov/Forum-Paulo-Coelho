@@ -31,7 +31,8 @@
         {
             AutoMapperConfig.RegisterMappings(Assembly.Load("ForumSystem.Api"));
 
-            var data = this.GenerateValidTestComments(1);
+          //  var data = this.GenerateValidTestComments(1);
+            var data = Mock.Create<IForumDbContext>();
 
             var controller = new CommentsController(data);
 
