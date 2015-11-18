@@ -45,9 +45,9 @@ namespace ForumSystem.Services.Test.TestObjects
                     Id = i,
                     PostDate = new DateTime(2015, 11, i + 1),
                     ThreadId = thread.Id,
-                    Thread=thread,
+                    Thread = thread,
                     UserId = user.Id,
-                    User=user
+                    User = user
                 };
 
                 postsRepository.Add(post);
@@ -71,7 +71,7 @@ namespace ForumSystem.Services.Test.TestObjects
                     DateCreated = new DateTime(2015, 11, i + 1),
                     Title = "title" + i,
                     UserId = user.Id,
-                    User=user
+                    User = user
                 };
 
                 threadsRepository.Add(thread);
@@ -96,9 +96,9 @@ namespace ForumSystem.Services.Test.TestObjects
                     CommentDate = new DateTime(2015, 11, i + 1),
                     Content = "content" + i,
                     PostId = post.Id,
-                    Post=post,
+                    Post = post,
                     UserId = user.Id,
-                    User=user,
+                    User = user,
                 };
 
                 commentsRepository.Add(comment);

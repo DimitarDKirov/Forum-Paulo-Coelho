@@ -10,7 +10,7 @@
     public class MemoryRepository<T> : IRepository<T> where T : class
     {
         private IList<T> data;
-       
+
         public MemoryRepository()
         {
             this.data = new List<T>();
@@ -39,13 +39,13 @@
             }
             else
             {
-                var random=new Random();
+                var random = new Random();
                 index = random.Next(this.data.Count);
             }
 
-            if(index>=this.data.Count)
+            if (index >= this.data.Count)
             {
-               return null;
+                return null;
             }
 
             return this.data[index];
