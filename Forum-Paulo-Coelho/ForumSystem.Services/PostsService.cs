@@ -84,8 +84,8 @@ namespace ForumSystem.Services
 
                 // Implement notifications functionality or message queues
                 Client client = new Client(MessageQueueProjectId, MessageQueueToken);
-                Queue queue = client.Queue(threadCreator.Nickname);
-                queue.Push("[" + user.Nickname + "]" + " add post on your thread.");
+                Queue queue = client.Queue("Forum");
+                queue.Push(user.Nickname + " add post on your thread.");
             }
 
             return newPost.Id;

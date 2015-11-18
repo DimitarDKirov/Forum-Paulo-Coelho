@@ -221,6 +221,7 @@
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\PostsOldController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\ThreadsController.cs" />
