@@ -89,7 +89,7 @@
     <Compile Include="ControllersTests\PostsControllerTest.cs" />
     <Compile Include="ControllersTests\ThreadsControllerTests.cs" />
     <Compile Include="TestObjects\TestObjectsFactory.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="TestInit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

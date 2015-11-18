@@ -17,7 +17,7 @@ namespace ForumSystem.Services.Test
         [TestInitialize]
         public void Init()
         {
-            this.users = TestObjectsFactory.GetUserRepository();
+            this.users = TestObjectsFactory.GetUsersRepository();
            // this.service = new ThreadService()
         }
     }

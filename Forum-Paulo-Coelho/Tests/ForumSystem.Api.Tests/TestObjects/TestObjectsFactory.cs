@@ -84,19 +84,20 @@
                 Id = 1,
                 PostDate = new DateTime(2015, 11, 1),
                 ThreadId = 1,
-                UserId = "id1"
+                UserId = "id1",
             };
-            var posts=new List<Post>()
+            var posts = new List<Post>()
             {
                 post
             };
 
-            var postsService = new Mock<PostsService>();
-            postsService.Setup(p => p.Add(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>()))
-                .Returns(1);
+            var postsService = new Mock<IPostsService>();
+            postsService.Setup(p => p.Add(It.IsAny<string>(), It.Is<int>(t => t > 100), It.IsAny<string>())).Throws<ArgumentException>();
+            postsService.Setup(p => p.Add(It.IsAny<string>(), It.Is<int>(t => t < 100), It.IsAny<string>())).Returns(1);
             postsService.Setup(p => p.GetById(It.IsAny<int>())).Returns(post);
             postsService.Setup(p => p.GetByThread(It.IsAny<int>())).Returns(posts.AsQueryable());
-            postsService.Setup(p => p.GetByUser(It.IsAny<string>())).Returns(posts.AsQueryable());
+            postsService.Setup(p => p.GetByUser(It.Is<string>(s => s != "not exist"))).Returns(posts.AsQueryable());
+            postsService.Setup(p => p.GetByUser(It.Is<string>(s => s == "not exist"))).Throws<ArgumentException>();
             postsService.Setup(p => p.Update(It.IsAny<int>(), It.IsAny<string>()));
 
             return postsService.Object;
