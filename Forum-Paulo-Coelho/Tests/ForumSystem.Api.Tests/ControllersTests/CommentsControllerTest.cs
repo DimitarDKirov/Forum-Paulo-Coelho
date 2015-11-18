@@ -7,13 +7,23 @@
     using ForumSystem.Api.Controllers;
     using System.Web.Http.Results;
     using ForumSystem.Api.Models;
+    using ForumSystem.Models;
 
     public class CommentsControllerTest
     {
-        [TestInitialize]
-        public void Init()
+
+        [TestClass]
+        public class ArticlesControllerTest
         {
-            this.postsService = TestObjectsFactory.GetPostsService();
+            private Comment comment;
+
+            [TestMethod]
+            public void GetAll_WhenCommentsInDb_ShouldReturnComments()
+            {
+                this.comment = TestObjectsFactory.GetCommentsRepository();
+
+               
+            }
         }
     }
 }
