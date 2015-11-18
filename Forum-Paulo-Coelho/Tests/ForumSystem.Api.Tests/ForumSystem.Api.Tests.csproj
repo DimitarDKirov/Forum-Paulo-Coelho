@@ -109,6 +109,7 @@
     <Compile Include="ControllersTests\PostsControllerTest.cs" />
     <Compile Include="ControllersTests\ThreadsControllerTests.cs" />
     <Compile Include="RouteTests\PostsRouteTests.cs" />
+    <Compile Include="RouteTests\ThreadsRouteTests.cs" />
     <Compile Include="TestObjects\TestObjectsFactory.cs" />
     <Compile Include="TestInit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
