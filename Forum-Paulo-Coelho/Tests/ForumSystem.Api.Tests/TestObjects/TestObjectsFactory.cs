@@ -85,6 +85,10 @@
                 PostDate = new DateTime(2015, 11, 1),
                 ThreadId = 1,
                 UserId = "id1",
+                User = new User { Nickname = "testuser" },
+                Thread = new Thread { Title = "testTitle" },
+                Comments = new List<Comment>(),
+                Votes = new List<Vote>()
             };
             var posts = new List<Post>()
             {
@@ -98,7 +102,7 @@
             postsService.Setup(p => p.GetByThread(It.IsAny<int>())).Returns(posts.AsQueryable());
             postsService.Setup(p => p.GetByUser(It.Is<string>(s => s != "not exist"))).Returns(posts.AsQueryable());
             postsService.Setup(p => p.GetByUser(It.Is<string>(s => s == "not exist"))).Throws<ArgumentException>();
-            postsService.Setup(p => p.Update(It.IsAny<int>(), It.IsAny<string>()));
+            postsService.Setup(p => p.Update(It.IsAny<int>(), It.IsAny<string>())).Verifiable();
 
             return postsService.Object;
         }
