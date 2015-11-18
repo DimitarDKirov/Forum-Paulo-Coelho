@@ -21,8 +21,7 @@ Service support all restful operation like **PUT**, **GET**, **POST** and **DELE
 
 ### Models Class Diagram
 
-
-![]("./ForumSystemClassDiagram.png")
+<img class="slide-image" src="ForumSystemClassDiagram.png" style="width:100%; top:55%; left:10%" />
 
 
 ### API Controllers:
