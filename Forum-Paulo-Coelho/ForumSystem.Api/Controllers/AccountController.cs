@@ -19,7 +19,9 @@
     using ForumSystem.Api.Providers;
     using ForumSystem.Api.Results;
     using ForumSystem.Models;
+    using System.Web.Http.Cors;
 
+    [EnableCors("*", "*", "*")]
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
