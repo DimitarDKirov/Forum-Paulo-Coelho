@@ -4,6 +4,8 @@ Telerik Academy Web Services and Cloud 2015 team Paulo Coelho
 Web Services and Cloud Technologies � Practical Teamwork Project 2015
 =====================================================================
 
+http://forumpaulocoelho.azurewebsites.net
+
 Project Description
 -------------------
 
