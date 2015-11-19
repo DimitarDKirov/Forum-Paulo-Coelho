@@ -34,7 +34,7 @@
             this.data.Comments.Add(comment);
             this.data.SaveChanges();
 
-            return Ok();
+            return Ok(model);
         }
     }
 }

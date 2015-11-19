@@ -8,77 +8,89 @@
     using System.Web.Http.Results;
     using ForumSystem.Api.Models;
     using ForumSystem.Models;
-    using Telerik.JustMock;
+    //using Telerik.JustMock;
+    using Moq;
     using System;
+    using System.Linq;
     using ForumSystem.Data;
     using System.Threading;
     using System.Web.Http;
     using System.Net.Http;
     using System.Web.Http.Routing;
     using System.Reflection;
+    using System.Data.Entity;
 
     [TestClass]
     public class CommentsControllerTest
     {
+        private IList<Comment> comments;
 
         [TestInitialize]
         public void Init()
         {
-            Comment[] comment = this.GenerateValidTestComments(0);
+            comments = this.GenerateValidTestComments(10);
         }
 
+        [TestMethod]
         public void CreateShouldReturnCorrectComment()
         {
             AutoMapperConfig.RegisterMappings(Assembly.Load("ForumSystem.Api"));
+            var data = comments.AsQueryable();
+            var mockSet = new Mock<DbSet<Comment>>();
+            mockSet.As<IQueryable<Comment>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<Comment>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<Comment>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<Comment>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
 
-          //  var data = this.GenerateValidTestComments(1);
-            var data = Mock.Create<IForumDbContext>();
+            var mockContext = new Mock<IForumDbContext>();
+            mockContext.Setup(c => c.Comments).Returns(mockSet.Object);
 
-            var controller = new CommentsController(data);
+            var controller = new CommentsController(mockContext.Object);
 
             var okResponse = controller.Create(1, new CommentDataModel
             {
+                Id = 1,
                 Content = "Content"
             });
 
             var okResult = okResponse as OkNegotiatedContentResult<CommentDataModel>;
 
             Assert.IsNotNull(okResponse);
-            Assert.AreEqual(2, okResult.Content.Id);
-            Assert.AreEqual("Some Content", okResult.Content.Content);
+            Assert.AreEqual(1, okResult.Content.Id);
+            Assert.AreEqual("Content", okResult.Content.Content);
         }
 
         [TestMethod]
         public void GetAll_WhenCommentsInDb_ShouldReturnComments()
         {
-            Comment[] comments = this.GenerateValidTestComments(1);
+            //Comment[] comments = this.GenerateValidTestComments(1);
 
-            var repo = Mock.Create<IRepository<Comment>>();
-            Mock.Arrange(() => repo.All())
-                .Returns(() => comments.AsQueryable());
+           // var repo = Mock.Create<IRepository<Comment>>();
+           // Mock.Arrange(() => repo.All())
+           //     .Returns(() => comments.AsQueryable());
 
-            var data = Mock.Create<IForumDbContext>();
+           // var data = Mock.Create<IForumDbContext>();
 
-            Mock.Arrange(() => data.Comments)
-                .Returns(() => repo);
+           // Mock.Arrange(() => data.Comments)
+           //     .Returns(() => repo);
 
-            var controller = new CommentsController(data);
-           // this.SetupController(controller);
+           // var controller = new CommentsController(data);
+           //// this.SetupController(controller);
 
-            var actionResult = controller.Create(1, new CommentDataModel);
+           // var actionResult = controller.Create(1, new CommentDataModel);
 
-            var response = actionResult.ExecuteAsync(CancellationToken.None).Result;
+           // var response = actionResult.ExecuteAsync(CancellationToken.None).Result;
 
-            var actual = response.Content.ReadAsAsync<IEnumerable<CommentDataModel>>().Result.Select(a => a.ID).ToList();
+           // var actual = response.Content.ReadAsAsync<IEnumerable<CommentDataModel>>().Result.Select(a => a.ID).ToList();
 
-            var expected = comments.AsQueryable().Select(a => a.ID).ToList();
+           // var expected = comments.AsQueryable().Select(a => a.ID).ToList();
 
-            CollectionAssert.AreEquivalent(expected, actual);
+           // CollectionAssert.AreEquivalent(expected, actual);
         }
 
-        private Comment[] GenerateValidTestComments(int count)
+        private IList<Comment> GenerateValidTestComments(int count)
         {
-            Comment[] comments = new Comment[count];
+            List<Comment> comments = new List<Comment>();
 
             for (int i = 0; i < count; i++)
             {
@@ -89,7 +101,7 @@
                     CommentDate = DateTime.Now,
                     User = new User()
                 };
-                comments[i] = comment;
+                comments.Add(comment);
             }
 
             return comments;
