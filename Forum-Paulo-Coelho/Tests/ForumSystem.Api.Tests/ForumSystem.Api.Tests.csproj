@@ -107,6 +107,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ControllersTests\CategoriesControllerTests.cs" />
+    <Compile Include="ControllersTests\CommentControllerTest..cs" />
     <Compile Include="ControllersTests\PostsControllerTest.cs" />
     <Compile Include="ControllersTests\ThreadsControllerTests.cs" />
     <Compile Include="RouteTests\CategoriesRouteTests.cs" />
