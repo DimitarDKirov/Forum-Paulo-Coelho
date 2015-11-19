@@ -8,7 +8,9 @@
      using ForumSystem.Services.Contracts;
      using AutoMapper.QueryableExtensions;
      using AutoMapper;
+     using System.Web.Http.Cors;
 
+    [EnableCors("*","*","*")]
      public class PostsController : ApiController
      {
          private IPostsService postsService;

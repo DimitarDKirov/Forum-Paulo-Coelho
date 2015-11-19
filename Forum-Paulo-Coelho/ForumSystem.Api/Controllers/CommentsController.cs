@@ -10,7 +10,9 @@
     using ForumSystem.Api.Models;
     using ForumSystem.Data;
     using ForumSystem.Models;
+    using System.Web.Http.Cors;
 
+    [EnableCors("*","*","*")]
     public class CommentsController : BaseApiController
     {
         public CommentsController(IForumDbContext data)

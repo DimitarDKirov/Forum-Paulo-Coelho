@@ -4,7 +4,9 @@
     using System;
     using System.Linq;
     using System.Web.Http;
+    using System.Web.Http.Cors;
 
+    [EnableCors("*","*","*")]
     public class CategoriesController : ApiController
     {
         private readonly ICategoriesService categoriesService;
