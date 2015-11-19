@@ -5,7 +5,9 @@
     using AutoMapper.QueryableExtensions;
     using Models.Threads;
     using ForumSystem.Services.Contracts;
+    using System.Web.Http.Cors;
 
+    [EnableCors("*", "*", "*")]
     public class ThreadsController : ApiController
     {
         private IThreadService threads;
