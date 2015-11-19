@@ -19,6 +19,8 @@ namespace ForumSystem.Api.Models.Posts
 
         public string ThreadTitle { get; set; }
 
+        public IList<CommentDataModel> Comments { get; set; }
+
         public void CreateMappings(IConfiguration config)
         {
             config.CreateMap<Post, PostsResponseModel>()

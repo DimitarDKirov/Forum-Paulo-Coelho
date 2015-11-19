@@ -1,5 +1,6 @@
 ﻿namespace ForumSystem.Api.Models
 {
+    using ForumSystem.Api.Models.Contracts;
     using ForumSystem.Models;
     using System;
     using System.Collections.Generic;
@@ -8,7 +9,7 @@
     using System.Linq.Expressions;
     using System.Web;
 
-    public class CommentDataModel
+    public class CommentDataModel : IMapFrom<Comment>
     {
         public static Expression<Func<Comment, CommentDataModel>> FromComment
         {
