@@ -22,19 +22,26 @@
 
         [HttpPost]
         [Authorize]
-        public IHttpActionResult Create(int id, CommentDataModel model)
+        public IHttpActionResult Create(int postId, CommentDataModel model)
         {
             var userID = this.User.Identity.GetUserId();
             var comment = new Comment
             {
-                PostId = id,
+                PostId = postId,
                 UserId = userID,
                 Content = model.Content,
                 CommentDate = DateTime.Now
             };
 
             this.data.Comments.Add(comment);
-            this.data.SaveChanges();
+            try
+            {
+                this.data.SaveChanges();
+            }
+            catch
+            {
+                return this.BadRequest();
+            }
 
             return Ok(model);
         }
