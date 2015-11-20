@@ -105,7 +105,7 @@ Otherwise returns BadRequest.
 
 * **api/posts** - GET method to return all posts created by the currently logged user
 * **api/posts/1** - GET method which returns OK with information about the post with the given id
-* **api/posts/1 **- PUT method to update the post with the given id. Request should contain the new content. Returns OK if update was successful otherwise BadRequest.
+* **api/posts/1**- PUT method to update the post with the given id. Request should contain the new content. Returns OK if update was successful otherwise BadRequest.
 * **api/posts?threadId=1** -   GET method to return all posts for the thread with the given id. If successful returns OK and list of all posts found 
 
 ```json
@@ -195,7 +195,7 @@ Returns OK if request was successful or BadRequest otherwise
         "Name": "WebServices"
       },
       {
-        "Threads": [......],
+        "Threads": [],
         "Id": 2,
         "Name": "C"
       } ]
@@ -236,11 +236,12 @@ User accounts are managed by the integrated ASP.NET MVC authentication engine
 ```json
     {
         "email":"user@gmail.com",
-        "password":"...<pass>...", // at least 6 characters long
+        "password":"...<pass>...", 
         "ConfirmPassword":"...<pass>...",
         "nickname":"user"
     }
 ```
+Password is at least 6 characters long. Nickname must be 25 chracters long max
 Returns OK if account creation is successful.
 
 **Logging in**
