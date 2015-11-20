@@ -62,8 +62,8 @@
         {
             int savesBefore = this.postsRepository.NumberOfSaves;
             var postToAdd = this.postsRepository.All().FirstOrDefault();
-            var postUser = this.usersRepository.All().LastOrDefault();
-            int addedPostId = this.service.Add(postToAdd.Content, postToAdd.ThreadId, postUser.UserName);
+            var postUser = this.usersRepository.All().FirstOrDefault();
+            int addedPostId = this.service.Add(postToAdd.Content, postToAdd.ThreadId, postToAdd.User.UserName);
             Assert.AreEqual(1, this.postsRepository.NumberOfSaves - savesBefore, "Data should invoke Save Changes");
             var addedPost = this.postsRepository.GetById(addedPostId);
             Assert.IsNotNull(addedPost, "Post should be added");

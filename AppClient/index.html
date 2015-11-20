@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>App</title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css" />
+	<link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.css" />
+     <link rel="stylesheet" href="bower_components/jt.timepicker/jquery.timepicker.css">
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css"/>
+    <link rel="stylesheet" href="app/css/main.css"/>
+</head>
+
+<body>
+    <div id="wrapper" class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/home">Home</a></li>
+                        <li><a href="#/threads">Threads</a></li>
+                        <li><a href="#/register">Register</a></li>
+                        <li><a href="#/login">Login</a></li>
+                        <li><a href="#/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="content" class="container">
+
+        </div>
+
+    </div>
+    <script src="bower_components/system.js/dist/system.js"></script>
+    <script>
+        System.config({
+            transpiler: "babel",
+            map: {
+                babel: 'node_modules/babel-core/browser.js',
+                jquery: 'bower_components/jquery/dist/jquery.js',
+                jqueryUI:'bower_components/jquery-ui/jquery-ui.js',
+                bootstrap: 'bower_components/bootstrap/dist/js/bootstrap.js',
+                timepicker: 'bower_components/jt.timepicker/jquery.timepicker.js',
+				moment: 'bower_components/moment/moment.js',
+                data: 'app/js/data.js',
+                template: 'app/js/template.js',
+                handlebars: 'bower_components/handlebars/handlebars.js',
+                toastr: 'bower_components/toastr/toastr.js',
+                sammy: 'bower_components/sammy/lib/sammy.js',
+                htmlRenderer: 'app/js/htmlRenderer.js',
+                threadsController: 'app/js/controllers/threadsController.js',
+                postsController: 'app/js/controllers/postsController.js',
+                userController: 'app/js/controllers/userController.js'
+            }
+        });
+        System.import('app/app.js').then(function (app) {
+            app.init();
+        });
+    </script>
+</body>
+
+</html>

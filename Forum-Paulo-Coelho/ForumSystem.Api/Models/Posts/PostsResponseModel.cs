@@ -1,14 +1,14 @@
-﻿using ForumSystem.Api.Models.Contracts;
-using ForumSystem.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AutoMapper;
-
-namespace ForumSystem.Api.Models.Posts
+﻿namespace ForumSystem.Api.Models.Posts
 {
-    public class PostsResponseModel:IMapFrom<Post>,IHaveCustomMappings
+    using ForumSystem.Api.Models.Contracts;
+    using ForumSystem.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using AutoMapper;
+
+    public class PostsResponseModel : IMapFrom<Post>, IHaveCustomMappings
     {
         public int Id { get; set; }
         public DateTime PostDate { get; set; }
@@ -27,7 +27,7 @@ namespace ForumSystem.Api.Models.Posts
                 .ForMember(prs => prs.NickName, opts => opts.MapFrom(p => p.User.Nickname));
 
             config.CreateMap<Post, PostsResponseModel>()
-                .ForMember(prs => prs.ThreadTitle, opts => opts.MapFrom(p => p.Thread.Title));   
+                .ForMember(prs => prs.ThreadTitle, opts => opts.MapFrom(p => p.Thread.Title));
         }
     }
 }

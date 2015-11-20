@@ -1,0 +1,13 @@
+{{#if threads}}
+	{{#if threads}}
+	{{#each threads}}
+		<div class="thread" id="{{this.Id}}" data-thread-id="{{this.Id}}">
+			<h3>{{this.Title}}</h3>
+			<p>{{this.Content}}</p>
+			<a href="#/posts-create/{{this.Id}}" class="btn btn-success">Add Post</a>
+		</div>
+	{{/each}}
+	{{/if}}
+{{else}}
+ <h1>No threads</h1>
+ {{/if}}

@@ -16,5 +16,9 @@ Service support all restful operation like **PUT**, **GET**, **POST** and **DELE
 ### Source control repository URI:
 
 GitHub repo [Forum-Paulo-Coelho](https://github.com/DimitarDKirov/Forum-Paulo-Coelho) 
+
 [Documentation](https://github.com/DimitarDKirov/Forum-Paulo-Coelho/blob/master/Documentation/ProjectDescription.md)
-Azure: http://forumpaulocoelho.azurewebsites.net
+
+###Azure:
+
+ http://forumpaulocoelho.azurewebsites.net

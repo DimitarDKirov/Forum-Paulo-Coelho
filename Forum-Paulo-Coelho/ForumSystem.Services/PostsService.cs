@@ -4,13 +4,17 @@
     using ForumSystem.Models;
     using System;
     using System.Linq;
+    using System.Configuration;
     using ForumSystem.Data;
     using IronMQ;
+    using ForumSystem.Data.Migrations;
 
     public class PostsService : IPostsService
     {
-        private const string MessageQueueProjectId = "5649969d4aa03100090000b2";
-        private const string MessageQueueToken = "j46Yol8vc3puwszWc9O3";
+        private readonly string MessageQueueProjectId = ConfigurationManager.AppSettings["MessageQueueProjectId"];//"5649969d4aa03100090000b2";
+        private readonly string MessageQueueToken = ConfigurationManager.AppSettings["MessageQueueToken"];//"j46Yol8vc3puwszWc9O3";
+        private readonly string MessageQueueName = ConfigurationManager.AppSettings["QueueName"];
+        private const string NotificationMessage = " added post on your thread.";
         private readonly IRepository<Post> postsRepository;
         private readonly IRepository<User> usersRepository;
         private readonly IRepository<Thread> threadsRepository;
@@ -72,7 +76,7 @@
             {
                 var threadUserNotification = new Notification
                 {
-                    Message = user.Nickname + " added post on your thread.",
+                    Message = user.Nickname + NotificationMessage,
                     DateCreated = newPost.PostDate
                 };
 
@@ -81,8 +85,9 @@
 
                 // Implement notifications functionality or message queues
                 Client client = new Client(MessageQueueProjectId, MessageQueueToken);
-                Queue queue = client.Queue("Forum");
-                queue.Push(user.Nickname + " add post on your thread.");
+                Queue queue = client.Queue(
+                    MessageQueueName);
+                queue.Push(user.Nickname + NotificationMessage);
             }
 
             return newPost.Id;
@@ -100,6 +105,24 @@
             this.postsRepository.Update(post);
             this.postsRepository.SaveChanges();
         }
+        
+        public void Delete(int id, string username)
+        {
+            var post = this.GetById(id);
+            if (post == null)
+            {
+                throw new ArgumentException("Post not found");
+            }
+
+            var user = this.FindUser(username);
+            if(user.Id!=post.User.Id)
+            {
+                throw new ArgumentException("The post can be deleted only by his author");
+            }
+
+            this.postsRepository.Delete(post.Id);
+            this.postsRepository.SaveChanges();
+        }
 
         private User FindUser(string username)
         {
@@ -115,5 +138,6 @@
             return user;
         }
 
+        
     }
 }

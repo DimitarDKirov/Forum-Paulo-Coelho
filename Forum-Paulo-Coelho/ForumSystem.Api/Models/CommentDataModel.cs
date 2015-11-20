@@ -3,11 +3,8 @@
     using ForumSystem.Api.Models.Contracts;
     using ForumSystem.Models;
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
     using System.Linq.Expressions;
-    using System.Web;
 
     public class CommentDataModel : IMapFrom<Comment>
     {

@@ -68,7 +68,7 @@
             var okResult = okResponse as OkNegotiatedContentResult<ThreadResponseModel>;
 
             Assert.IsNotNull(okResponse);
-            Assert.AreEqual(2, okResult.Content.Id);
+            Assert.AreEqual(1, okResult.Content.Id);
             Assert.AreEqual("Some Content", okResult.Content.Content);
             Assert.AreEqual("Test Title", okResult.Content.Title);
         }

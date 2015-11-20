@@ -18,5 +18,7 @@ namespace ForumSystem.Services.Contracts
         int Add(string content, int threadId, string userName);
 
         void Update(int postId, string Content);
+
+        void Delete(int id, string username);
     }
 }
