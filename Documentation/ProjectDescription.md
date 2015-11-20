@@ -5,6 +5,9 @@
 
 [Forum-Paulo-Coelho](https://github.com/DimitarDKirov/Forum-Paulo-Coelho) 
 
+### API AZURE URI
+
+[forumpaulocoelho.azurewebsites.net](http://forumpaulocoelho.azurewebsites.net)
 
 ### Models Class Diagram
 
