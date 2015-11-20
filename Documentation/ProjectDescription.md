@@ -189,7 +189,8 @@ Returns OK if request was successful or BadRequest otherwise
 * **api/categories** - GET method, returns JSON object with all categories
 
 ```json
-     [  {
+    [  
+     {
         "Threads": [],
         "Id": 1,
         "Name": "WebServices"
@@ -198,7 +199,8 @@ Returns OK if request was successful or BadRequest otherwise
         "Threads": [],
         "Id": 2,
         "Name": "C"
-      } ]
+      } 
+     ]
 ```
 
 * **/api/categories/<id>?name=<new name>** - PUT method, updates the name of the category with the given id. Returns OK in success or Bad Request category with the given id does not exist.
@@ -256,7 +258,7 @@ On success it returns OK with JSON object whicn contains token.
 
 ```json
       { 
-	 "access_token": ....<token>...
+	 "access_token": "....<token>..."
          "token_type": "bearer",
          "expires_in": 1209599,
          "userName": "user@gmail.com",
