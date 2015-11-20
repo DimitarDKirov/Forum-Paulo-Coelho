@@ -26,7 +26,7 @@
 **Endpoints:**
 
 * **api/threads** - GET method to return list of threads in the system in format
-```
+```json
      [{
         "Id": 1,
         "Title": "Lections",
@@ -48,7 +48,7 @@
         "DateCreated": "2015-11-20T07:05:52.393",
         "Creator": "admin"
       }]
-      ```
+```
      
 
 * **api/threads/{id}** - GET method to find information about the thread with the given id. If is found returns OK with content
