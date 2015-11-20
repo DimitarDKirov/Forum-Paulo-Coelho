@@ -258,7 +258,7 @@ On success it returns OK with JSON object whicn contains token.
 
 ```json
       { 
-	 "access_token": "....<token>..."
+	       "access_token": "....<token>...",
          "token_type": "bearer",
          "expires_in": 1209599,
          "userName": "user@gmail.com",
