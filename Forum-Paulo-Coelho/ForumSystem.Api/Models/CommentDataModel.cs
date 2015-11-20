@@ -1,12 +1,13 @@
 ﻿namespace ForumSystem.Api.Models
 {
+    using AutoMapper;
     using ForumSystem.Api.Models.Contracts;
     using ForumSystem.Models;
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.Linq.Expressions;
 
-    public class CommentDataModel : IMapFrom<Comment>
+    public class CommentDataModel : IMapFrom<Comment>, IHaveCustomMappings
     {
         public static Expression<Func<Comment, CommentDataModel>> FromComment
         {
@@ -32,5 +33,11 @@
 
         [Required]
         public int PostId { get; set; }
+
+        public void CreateMappings(IConfiguration config)
+        {
+            config.CreateMap<Comment, CommentDataModel>()
+                .ForMember(cdm => cdm.UserName, opts => opts.MapFrom(c => c.User.UserName));
+        }
     }
 }
