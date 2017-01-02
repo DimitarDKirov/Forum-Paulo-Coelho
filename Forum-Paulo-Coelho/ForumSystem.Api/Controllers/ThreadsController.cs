@@ -7,7 +7,7 @@
     using ForumSystem.Services.Contracts;
     using System.Web.Http.Cors;
 
-    [EnableCors("*", "*", "*")]
+    //[EnableCors("*", "*", "*")]
     public class ThreadsController : ApiController
     {
         private IThreadService threads;
@@ -22,6 +22,7 @@
         {
             var threads = this.threads
                 .All()
+                .OrderByDescending(t=>t.DateCreated)
                 .ProjectTo<ThreadResponseModel>()
                 .ToList();
 
