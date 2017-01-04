@@ -257,18 +257,11 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="public\448c34a56d699c29117adc64c43affeb.woff2" />
-    <Content Include="public\89889688147bd7575d6327160d64e760.svg" />
-    <Content Include="public\e18bbf611f2a2e43afc071aa2f4e1512.ttf" />
-    <Content Include="public\f4769f9bdb7466be65088239c12046d1.eot" />
-    <Content Include="public\fa2772327f55d8198301fdb8bcfc8158.woff" />
-    <Content Include="public\favicon.ico" />
-    <Content Include="public\index.html" />
+    <Content Include="index.html" />
     <Content Include="public\inline.31db2f0c29a02e9c22f2.bundle.js" />
     <Content Include="public\main.63dd9a6765a16e9acda4.bundle.js" />
     <Content Include="public\scripts.f69115a61cd6a064cb57.bundle.js" />
     <Content Include="public\styles.f49d43505ae28b3d9a36.bundle.css" />
-    <Content Include="public\vendor.44822b1a860690e2298f.bundle.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -300,16 +293,11 @@
     <Content Include="iron.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="public\inline.31db2f0c29a02e9c22f2.bundle.map" />
     <Content Include="public\main.63dd9a6765a16e9acda4.bundle.js.gz" />
-    <Content Include="public\main.63dd9a6765a16e9acda4.bundle.map" />
     <Content Include="public\scripts.f69115a61cd6a064cb57.bundle.js.gz" />
-    <Content Include="public\scripts.f69115a61cd6a064cb57.bundle.map" />
     <Content Include="public\styles.f49d43505ae28b3d9a36.bundle.css.gz" />
     <Content Include="public\styles.f49d43505ae28b3d9a36.bundle.js.gz" />
-    <Content Include="public\styles.f49d43505ae28b3d9a36.bundle.map" />
     <Content Include="public\vendor.44822b1a860690e2298f.bundle.js.gz" />
-    <Content Include="public\vendor.44822b1a860690e2298f.bundle.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
