@@ -262,6 +262,7 @@
     <Content Include="public\main.63dd9a6765a16e9acda4.bundle.js" />
     <Content Include="public\scripts.f69115a61cd6a064cb57.bundle.js" />
     <Content Include="public\styles.f49d43505ae28b3d9a36.bundle.css" />
+    <Content Include="public\vendor.44822b1a860690e2298f.bundle.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
